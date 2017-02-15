@@ -87,11 +87,6 @@ shinyServer(function(input, output) {
   myTexts <- reactive (cleanUpDocs(myTexts1(), myStopWordsFromFile))  # removing stop words, etc.
   myTexts.stemmed <- reactive(tm_map(myTexts(), stemDocument))      # stemmed version
   
-  observe({
-    mytexts <- myTexts()
-    save(mytexts, file = "mytexts.rda")
-    })
-  
   ### create all the frequency lists that will be used for creating output; 
   ### store as one reactive list of lists
   AllFreqListsReactive <- reactive({          ## start creating collection of frequency lists
